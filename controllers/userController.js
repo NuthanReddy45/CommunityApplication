@@ -397,7 +397,30 @@ const changePasswordController = async (req,res) => {
         }
 }
 
-
+//reset password
+const resetPasswordController = (req, res) => {
+    if(false) {
+        //update new password in database
+    }
+    else if(req.query.ValidityCheck && req.query.ValidityCheck == 'pass') {
+        res.render('../resetPasswordForm', { title: 'Reset Password', message:'Please set a strong password' });
+    }
+    else {
+        const resetToken = req.query.token;
+        // check if reset token exists in Redis
+        redisClient.get(resetToken, (err, userEmail) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ error: "Error retrieving reset token" });
+        } else if (!userEmail) {
+            res.status(400).json({ error: "Invalid reset token" });
+        } else {
+            // redirect to password reset page with email as query parameter
+            res.redirect(`/resetPassword?validityCheck='pass'&&email=${userEmail}`);
+        }
+        });
+    }
+  };
 
 module.exports = {
     signinController,
@@ -405,5 +428,6 @@ module.exports = {
     changePasswordController,
     sendVerificationMail,
     verifiedEmailController,
-    emailVerificationController
+    emailVerificationController,
+    resetPasswordController
 }

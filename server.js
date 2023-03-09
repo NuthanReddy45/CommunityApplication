@@ -1,5 +1,8 @@
 const express = require("express");
 const connectDB = require("./database/db");
+const redis = require("redis");
+
+const redisClient = redis.createClient();
 const userRoutes = require("./routes/userRoutes");
 const roomRoutes = require("./routes/roomRoutes");
 const blogRoutes = require("./routes/blogRoutes");
