@@ -10,7 +10,7 @@ app.use(express.json());
 app.use("/auth", userRoutes);
 app.use("/room", roomRoutes);
 
-const PORT = 5000 || process.env.PORT;
+const PORT = 5005 || process.env.PORT;
 connectDB();
 
 app.get("/", (req, res) => {
