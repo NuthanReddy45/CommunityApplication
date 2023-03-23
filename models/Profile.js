@@ -10,6 +10,7 @@ const ProfileSchema = new mongoose.Schema(
     userName: {
       type: String,
       required: true,
+      unique: true,
     },
     rooms: {
       type: Array,
@@ -23,6 +24,10 @@ const ProfileSchema = new mongoose.Schema(
     professor: {
       type: Boolean,
     },
+    avatar:{
+      type: String,
+      default: ""
+    }
   },
   { timestamps: true }
 );

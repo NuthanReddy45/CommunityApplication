@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const userVerificationSchema = mongoose.Schema({
-    userId: {
+    email: {
         type: String
     },
     uniqueString: {
@@ -10,7 +10,7 @@ const userVerificationSchema = mongoose.Schema({
     createdAt: {
         type: Date 
     },
-    expirtDate: {
+    expiresAt: {
         type: Date
     }
 })

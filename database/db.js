@@ -16,4 +16,8 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;
+const redis = require("redis");
+//setup in ./server.js
+const redisClient = redis.createClient();
+
+module.exports = { connectDB, redisClient };
